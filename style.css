@@ -1,0 +1,214 @@
+:root {
+    --primary-lime: #a3e635; /* Sharp lime from the original logo */
+    --dark-green: #4d7c0f; /* Heading color from the image */
+    --teal-dark: #0f172a; /* Slate/Teal for dark cards and text */
+    --grey-border: #e2e8f0;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f1f5f9;
+    color: var(--text-main);
+    line-height: 1.5;
+}
+
+/* Replicating A4 Proportion for Professional Print/PDF Look */
+.a4-container {
+    max-width: 842px; /* Standard A4 width factor */
+    margin: 2rem auto;
+    background: var(--white);
+    min-height: 1191px; /* Standard A4 height factor */
+    box-shadow: 0 0 40px rgba(0,0,0,0.1);
+}
+
+/* Hero Header: Matching the Original Image Exactly */
+.hero-header {
+    position: relative;
+    height: 400px;
+    background: url('hero-bg.png') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.4));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+}
+
+.main-logo {
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 0.5rem;
+}
+
+.main-logo .lime {
+    color: var(--primary-lime);
+}
+
+.tagline {
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 0.25rem;
+    opacity: 0.9;
+}
+
+.industry-description {
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    margin-bottom: 2rem;
+}
+
+.company-details {
+    border-top: 1px solid rgba(255,255,255,0.3);
+    padding-top: 1.5rem;
+}
+
+.company-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.motto {
+    font-size: 0.95rem;
+    font-weight: 300;
+    opacity: 0.8;
+}
+
+.profile-date {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Main Body Content */
+.main-body {
+    padding: 3.5rem;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.section-title h2 {
+    color: var(--dark-green);
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.section-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--grey-border);
+    margin-bottom: 1.5rem;
+}
+
+.intro-text {
+    font-size: 1.05rem;
+    margin-bottom: 2.5rem;
+    color: var(--text-main);
+}
+
+/* Metrics Grid: Gradient Match */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 3.5rem;
+}
+
+.metric-card {
+    background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+    padding: 2rem 1.5rem;
+    border-radius: 8px;
+    color: var(--white);
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.metric-card:nth-child(2) {
+    background: linear-gradient(135deg, #14532d 0%, #166534 100%);
+}
+
+.metric-value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.metric-label {
+    font-size: 0.85rem;
+    font-weight: 400;
+    opacity: 0.8;
+    text-transform: uppercase;
+}
+
+/* Content Boxes: Matching Original Layout */
+.content-box {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 4px;
+    margin-bottom: 2rem;
+}
+
+.content-box h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--teal-dark);
+}
+
+.lime-border {
+    border-left: 6px solid var(--primary-lime);
+}
+
+.dark-border {
+    border-left: 6px solid var(--teal-dark);
+}
+
+.footprint-block {
+    padding: 1rem 0;
+    margin-bottom: 2.5rem;
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+@page {
+    size: A4;
+    margin: 0;
+}
+
+@media print {
+    body { background: none; }
+    .a4-container { margin: 0; box-shadow: none; }
+}
+
