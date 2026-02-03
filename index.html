@@ -22,6 +22,8 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
         }
 
         body {
@@ -94,6 +96,8 @@
         /* Section Styling */
         .section {
             padding: 60px 0;
+            page-break-inside: avoid;
+            break-inside: avoid;
         }
 
         .section-header {
@@ -132,12 +136,14 @@
         }
 
         .stat-card {
-            background: linear-gradient(135deg, #1A3008, #90C63E);
-            color: #fff;
+            background: linear-gradient(135deg, #1A3008, #90C63E) !important;
+            color: #fff !important;
             padding: 40px 20px;
             border-radius: 16px;
             text-align: center;
             box-shadow: var(--card-shadow);
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
         }
 
         .stat-value {
@@ -162,10 +168,12 @@
         }
 
         .info-card {
-            background: #F4FBF1;
+            background: #F4FBF1 !important;
             padding: 30px;
             border-left: 6px solid var(--primary-green);
             border-radius: 0 16px 16px 0;
+            page-break-inside: avoid;
+            break-inside: avoid;
         }
 
         .info-card h3 {
@@ -183,12 +191,14 @@
         }
 
         .service-card {
-            background: #fff;
+            background: #fff !important;
             border: 1px solid #E5E7EB;
             padding: 24px;
             border-radius: 16px;
             transition: transform 0.2s;
             box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            page-break-inside: avoid;
+            break-inside: avoid;
         }
 
         .service-card:hover {
@@ -257,6 +267,23 @@
             border-radius: 20px;
             font-weight: 700;
             margin-top: 10px;
+        }
+
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            .hero {
+                background: url('assets/hero-bg.jpg') center/cover no-repeat !important;
+                height: 500px !important;
+            }
+            .hero-overlay {
+                background: linear-gradient(135deg, rgba(31, 111, 235, 0.4), rgba(18, 60, 105, 0.8)) !important;
+            }
+            .stat-card {
+                background: linear-gradient(135deg, #1A3008, #90C63E) !important;
+            }
         }
 
         @media (max-width: 768px) {
