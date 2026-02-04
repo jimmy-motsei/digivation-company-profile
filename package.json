@@ -1,0 +1,12 @@
+{
+  "name": "digivation-pdf-generator",
+  "version": "1.0.0",
+  "description": "Generate PDF from Digivation company profile",
+  "main": "generate-pdf.js",
+  "scripts": {
+    "generate-pdf": "node generate-pdf.js"
+  },
+  "dependencies": {
+    "puppeteer": "^21.0.0"
+  }
+}

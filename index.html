@@ -38,15 +38,15 @@
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 40px;
         }
 
         /* Hero Section */
         .hero {
             position: relative;
-            height: 500px;
+            height: 100vh;
             background: url('assets/hero-bg.jpg') center/cover no-repeat;
             display: flex;
             align-items: center;
@@ -66,26 +66,31 @@
             position: relative;
             z-index: 1;
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
 
         .hero-logo {
-            max-width: 320px;
-            margin-bottom: 24px;
+            max-width: 450px;
+            margin-bottom: 32px;
             filter: brightness(0) invert(1);
         }
 
         .hero-tagline {
-            font-size: 1.5rem;
+            font-size: 2.2rem;
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             letter-spacing: 0.5px;
         }
 
         .hero-sub {
-            font-size: 1rem;
+            font-size: 1.3rem;
             opacity: 0.9;
             font-weight: 500;
-            margin-bottom: 32px;
+            margin-bottom: 40px;
         }
 
         .hero-details {
@@ -95,9 +100,30 @@
 
         /* Section Styling */
         .section {
-            padding: 60px 0;
+            padding: 0;
             page-break-inside: avoid;
             break-inside: avoid;
+            height: 100vh; /* Changed from min-height 100vh to height 100vh */
+            overflow: hidden; /* Prevent spillover */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .section-content {
+            width: 100%;
+            max-width: 1400px;
+            padding: 60px 60px 40px 60px; /* Generous top padding, balanced others */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .page-break {
+            page-break-before: always;
+            break-before: page;
         }
 
         .section-header {
@@ -121,24 +147,24 @@
         }
 
         .intro-text {
-            font-size: 1rem;
+            font-size: 0.95rem; /* Slightly smaller for landscape fit */
             color: var(--text-gray);
-            margin-bottom: 40px;
-            line-height: 1.8;
+            margin-bottom: 20px; /* Compacted */
+            line-height: 1.6;
         }
 
         /* Stats Grid */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            gap: 30px;
             margin-bottom: 40px;
         }
 
         .stat-card {
             background: linear-gradient(135deg, #1A3008, #90C63E) !important;
             color: #fff !important;
-            padding: 40px 20px;
+            padding: 25px 20px; /* More compact */
             border-radius: 16px;
             text-align: center;
             box-shadow: var(--card-shadow);
@@ -164,12 +190,12 @@
         .card-group {
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 16px; /* Compacted gap */
         }
 
         .info-card {
             background: #F4FBF1 !important;
-            padding: 30px;
+            padding: 20px 25px; /* More compact */
             border-left: 6px solid var(--primary-green);
             border-radius: 0 16px 16px 0;
             page-break-inside: avoid;
@@ -186,14 +212,14 @@
         /* Services Grid */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
         }
 
         .service-card {
             background: #fff !important;
             border: 1px solid #E5E7EB;
-            padding: 24px;
+            padding: 20px; /* Reduced from 24px */
             border-radius: 16px;
             transition: transform 0.2s;
             box-shadow: 0 2px 10px rgba(0,0,0,0.03);
@@ -244,13 +270,58 @@
             background: #fff;
         }
 
+        /* Call to Action */
+        .cta-section {
+            background: var(--bg-light);
+            border-radius: 20px;
+            padding: 0;
+            text-align: center;
+            margin-bottom: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            page-break-before: always;
+        }
+
+        /* B-BBEE Section */
+        .bbee-section {
+            min-height: calc(100vh - 80px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            page-break-before: always;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            height: 100vh; /* Consistent fixed height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            page-break-before: always;
+        }
+
+        .contact-content {
+            width: 100%;
+            max-width: 1400px;
+            padding: 60px 60px 40px 60px; /* Matching uniformity */
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
         /* Footer */
-        footer {
+        .footer-on-contact {
             background: #F3F4F6;
             padding: 40px 0;
             text-align: center;
             color: var(--text-gray);
             font-size: 0.85rem;
+            margin-top: 40px;
         }
 
         .footer-logo {
@@ -270,13 +341,18 @@
         }
 
         @media print {
+            @page {
+                size: A4 landscape;
+                margin: 0.5in;
+            }
             body {
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
             }
             .hero {
                 background: url('assets/hero-bg.jpg') center/cover no-repeat !important;
-                height: 500px !important;
+                height: 100vh !important;
+                page-break-after: always;
             }
             .hero-overlay {
                 background: linear-gradient(135deg, rgba(31, 111, 235, 0.4), rgba(18, 60, 105, 0.8)) !important;
@@ -284,14 +360,26 @@
             .stat-card {
                 background: linear-gradient(135deg, #1A3008, #90C63E) !important;
             }
+            .section, .cta-section, .bbee-section, .contact-section {
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            .page-break {
+                page-break-before: always;
+            }
         }
 
         @media (max-width: 768px) {
-            .stats-grid {
+            .stats-grid, .services-grid {
                 grid-template-columns: 1fr;
             }
             .hero-logo {
                 max-width: 240px;
+            }
+            .container {
+                padding: 0 20px;
             }
         }
     </style>
@@ -316,113 +404,123 @@
     <main class="container">
         <!-- About Section -->
         <section class="section">
-            <div class="section-header">
-                <span style="font-size: 24px;">🏢</span>
-                <h2 class="section-title">About Digivation</h2>
-            </div>
-            <p class="intro-text">
-                <strong>Digivation (Pty) Ltd</strong> is a strategic turnkey operations partner for major players within the Telecommunications Field Service and Infrastructure Maintenance industry in South Africa. With a proven track record of excellence and reliability, we have established ourselves as a trusted name in the telecommunications sector.
-            </p>
-
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <span class="stat-value">100+</span>
-                    <span class="stat-label">Skilled Professionals</span>
+            <div class="section-content">
+                <div class="section-header">
+                    <span style="font-size: 24px;">🏢</span>
+                    <h2 class="section-title">About Digivation</h2>
                 </div>
-                <div class="stat-card">
-                    <span class="stat-value">Level 1</span>
-                    <span class="stat-label">B-BBEE Status</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-value">100%</span>
-                    <span class="stat-label">Client Satisfaction</span>
-                </div>
-            </div>
-
-            <div class="card-group">
-                <div class="info-card">
-                    <h3>Our Mission</h3>
-                    <p>To deliver exceptional telecommunications infrastructure services through innovation, expertise, and unwavering commitment to quality, while contributing to South Africa's digital transformation and economic empowerment.</p>
-                </div>
-                <p class="intro-text" style="margin-top: 20px;">
-                    Employing in excess of 100 skilled staff members and with a well-established footprint across South Africa, we are ideally positioned for future growth and diversification. Our commitment to excellence, combined with our Level 1 B-BBEE status, makes us the preferred partner for organizations seeking reliable, compliant, and high-quality telecommunications services.
+                <p class="intro-text">
+                    <strong>Digivation (Pty) Ltd</strong> is a strategic turnkey operations partner for major players within the Telecommunications Field Service and Infrastructure Maintenance industry in South Africa. With a proven track record of excellence and reliability, we have established ourselves as a trusted name in the telecommunications sector.
                 </p>
-                <div class="info-card">
-                    <h3>Our Vision</h3>
-                    <p>To be the leading provider of telecommunications infrastructure services in South Africa, recognized for operational excellence, technological leadership, and sustainable community impact.</p>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-value">100+</span>
+                        <span class="stat-label">Skilled Professionals</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value">Level 1</span>
+                        <span class="stat-label">B-BBEE Status</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value">100%</span>
+                        <span class="stat-label">Client Satisfaction</span>
+                    </div>
+                </div>
+
+                <div class="card-group">
+                    <div class="info-card">
+                        <h3>Our Mission</h3>
+                        <p>To deliver exceptional telecommunications infrastructure services through innovation, expertise, and unwavering commitment to quality, while contributing to South Africa's digital transformation and economic empowerment.</p>
+                    </div>
+                    <p class="intro-text" style="margin-top: 20px;">
+                        Employing in excess of 100 skilled staff members and with a well-established footprint across South Africa, we are ideally positioned for future growth and diversification. Our commitment to excellence, combined with our Level 1 B-BBEE status, makes us the preferred partner for organizations seeking reliable, compliant, and high-quality telecommunications services.
+                    </p>
+                    <div class="info-card">
+                        <h3>Our Vision</h3>
+                        <p>To be the leading provider of telecommunications infrastructure services in South Africa, recognized for operational excellence, technological leadership, and sustainable community impact.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Services Section -->
         <section class="section">
-            <div class="section-header">
-                <span style="font-size: 24px;">🛠️</span>
-                <h2 class="section-title">What We Do</h2>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <h4>Site Surveys & Audits</h4>
-                    <p>Coverage, capacity, security and redundancy-focused surveys; troubleshooting; passive and active repair; detailed reporting for every test.</p>
+            <div class="section-content">
+                <div class="section-header">
+                    <span style="font-size: 24px;">🛠️</span>
+                    <h2 class="section-title">What We Do</h2>
                 </div>
-                <div class="service-card">
-                    <h4>Radio Frequency (RF)</h4>
-                    <p>TSS & planning surveys, structural engineering and design, civils, tower rigging, upgrades, MW link installs, optimization, and preventative maintenance.</p>
-                </div>
-                <div class="service-card">
-                    <h4>Wireless Connectivity</h4>
-                    <p>High-reliability point-to-point and point-to-multipoint networks; frequency-appropriate designs for Wi-Fi, cellular, and sensor networks.</p>
-                </div>
-                <div class="service-card">
-                    <h4>Network Maintenance</h4>
-                    <p>Regular inspections, guy wire management, equipment maintenance, lighting & safety compliance, and security enhancements.</p>
-                </div>
-                <div class="service-card">
-                    <h4>Cloud Services</h4>
-                    <p>Tailored cloud strategy, implementation, and optimization—ensuring a seamless, secure move aligned to business goals.</p>
-                </div>
-                <div class="service-card">
-                    <h4>Internet of Things (IoT)</h4>
-                    <p>Building management, industrial/logistics and retail sensors; data collection, analysis, alerts and energy monitoring.</p>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h4>Site Surveys & Audits</h4>
+                        <p>Coverage, capacity, security and redundancy-focused surveys; troubleshooting; passive and active repair; detailed reporting for every test.</p>
+                    </div>
+                    <div class="service-card">
+                        <h4>Radio Frequency (RF)</h4>
+                        <p>TSS & planning surveys, structural engineering and design, civils, tower rigging, upgrades, MW link installs, optimization, and preventative maintenance.</p>
+                    </div>
+                    <div class="service-card">
+                        <h4>Wireless Connectivity</h4>
+                        <p>High-reliability point-to-point and point-to-multipoint networks; frequency-appropriate designs for Wi-Fi, cellular, and sensor networks.</p>
+                    </div>
+                    <div class="service-card">
+                        <h4>Network Maintenance</h4>
+                        <p>Regular inspections, guy wire management, equipment maintenance, lighting & safety compliance, and security enhancements.</p>
+                    </div>
+                    <div class="service-card">
+                        <h4>Cloud Services</h4>
+                        <p>Tailored cloud strategy, implementation, and optimization—ensuring a seamless, secure move aligned to business goals.</p>
+                    </div>
+                    <div class="service-card">
+                        <h4>Internet of Things (IoT)</h4>
+                        <p>Building management, industrial/logistics and retail sensors; data collection, analysis, alerts and energy monitoring.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Projects Section -->
         <section class="section">
-            <div class="section-header">
-                <span style="font-size: 24px;">📈</span>
-                <h2 class="section-title">Projects We've Delivered</h2>
-            </div>
-            <div class="card-group">
-                <div class="service-card" style="width: 100%; margin-bottom: 12px;">
-                    <h4>Preventative & Corrective Maintenance Programs</h4>
-                    <p>Nationwide, multi-site tower maintenance programs for mobile operators and infrastructure owners (MTN & Telkom).</p>
+            <div class="section-content">
+                <div class="section-header">
+                    <span style="font-size: 24px;">📈</span>
+                    <h2 class="section-title">Projects We've Delivered</h2>
                 </div>
-                <div class="service-card" style="width: 100%; margin-bottom: 12px;">
-                    <h4>RF Build & Upgrade Workstreams</h4>
-                    <p>Rigging, RF equipment swaps/upgrades, MW link installation and optimization across urban and rural footprints.</p>
-                </div>
-                <div class="service-card" style="width: 100%; margin-bottom: 12px;">
-                    <h4>Connectivity & IoT Deployments</h4>
-                    <p>Point-to-point backhaul, sensor rollouts for conservation estates, buildings and industrial facilities with dashboards and alerting.</p>
+                <div class="card-group">
+                    <div class="service-card" style="width: 100%; margin-bottom: 12px;">
+                        <h4>Preventative & Corrective Maintenance Programs</h4>
+                        <p>Nationwide, multi-site tower maintenance programs for mobile operators and infrastructure owners (MTN & Telkom).</p>
+                    </div>
+                    <div class="service-card" style="width: 100%; margin-bottom: 12px;">
+                        <h4>RF Build & Upgrade Workstreams</h4>
+                        <p>Rigging, RF equipment swaps/upgrades, MW link installation and optimization across urban and rural footprints.</p>
+                    </div>
+                    <div class="service-card" style="width: 100%; margin-bottom: 12px;">
+                        <h4>Connectivity & IoT Deployments</h4>
+                        <p>Point-to-point backhaul, sensor rollouts for conservation estates, buildings and industrial facilities with dashboards and alerting.</p>
+                    </div>
                 </div>
             </div>
         </section>
+    </main>
 
-        <!-- Call to Action -->
-        <section class="section" style="background: var(--bg-light); border-radius: 20px; padding: 40px; text-align: center; margin-bottom: 60px;">
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="section-content">
             <h2 style="color: var(--dark-green); margin-bottom: 16px;">Ready to strengthen your network?</h2>
             <p class="intro-text" style="max-width: 700px; margin: 0 auto 24px auto;">
                 Reach out for a technical discovery session and a rapid maintenance assessment across your footprint.
             </p>
             <div class="info-card" style="display: inline-block; background: #fff; border: 1px solid var(--primary-green);">
-                <p style="font-style: italic; font-weight: 500;">“We carry the risk with turnkey delivery, so you can focus on outcomes.”</p>
+                <p style="font-style: italic; font-weight: 500;">"We carry the risk with turnkey delivery, so you can focus on outcomes."</p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- B-BBEE Section -->
-        <section class="section">
+    <!-- B-BBEE Section -->
+    <section class="section bbee-section">
+        <div class="section-content">
             <div class="section-header">
                 <span style="font-size: 24px;">🎗️</span>
                 <h2 class="section-title">B-BBEE Credentials</h2>
@@ -432,10 +530,12 @@
                 <p>Digivation is proud to be a Level 1 B-BBEE contributor. This status provides our clients with 135% procurement recognition, demonstrating our commitment to South Africa's economic transformation and empowerment goals.</p>
                 <div class="b-bee-badge">135% Procurement Recognition</div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Contact Section -->
-        <section class="section">
+    <!-- Contact Section -->
+    <section class="section contact-section">
+        <div class="contact-content">
             <div class="section-header">
                 <span style="font-size: 24px;">📞</span>
                 <h2 class="section-title">Contact Information</h2>
@@ -454,15 +554,13 @@
                     <td>Level 1 B-BBEE</td>
                 </tr>
             </table>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>© 2025 Digivation (Pty) Ltd. All Rights Reserved.</p>
-            <p>Strategic Turnkey Operations Partner • Telecommunications Infrastructure Excellence</p>
+            
+            <div class="footer-on-contact">
+                <p>© 2025 Digivation (Pty) Ltd. All Rights Reserved.</p>
+                <p>Strategic Turnkey Operations Partner • Telecommunications Infrastructure Excellence</p>
+            </div>
         </div>
-    </footer>
+    </section>
 
 </body>
 </html>
